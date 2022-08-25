@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Document</title>
+    </head>
+    <body>
+        <form action="http://localhost:8080/jd/file">
+            <input type="file">
+            <input type="submit">
+        </form>text
+        <br>
+        <br>
+        <br>
+        <form action="http://localhost:8080/jd/file">
+            <!-- 隐藏域, 用户看不见, 但是提交的时候会一并提交给服务器 -->
+            <input type="hidden" name="userid" value="111">
+            用户代码<input type="text" name="usercode">
+            <input type="submit" value="提交">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,21 @@
+/*
+    标签选择器
+*/
+
+a {
+    text-decoration: none;
+}
+/*
+    cursor: 鼠标样式
+        pointer: 小手
+        hand: 也是, 但是存在兼容问题
+*/
+#baiduSpan{
+    text-decoration: underline chocolate;
+    font-style: italic;
+    cursor: wait;
+}
+
+ul{
+    
+}

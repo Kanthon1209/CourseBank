@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>单元格合并, 以及th标签</title>
+    </head>
+    <body>
+        <table border="1px" align="center" width="50%">
+            <tr>
+                <!-- 一般表格的第一行用th标签, 自动居中并且加粗 -->
+                <!-- th标签也是单元格标签, 比td多居中和加粗 -->
+                <th>员工编号</th>
+                <th>员工薪资</th>
+                <th>部门名称</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td rowspan="2">3</td>
+            </tr>
+            <tr>
+                <td colspan="2">1</td>
+            </tr>
+        </table>
+    </body>
+</html>

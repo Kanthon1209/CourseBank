@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>JS中的控制语句</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /*
+                1. if
+                2. switch
+                3. while
+                4. do...while
+                5. for
+                6. break
+                7. continue
+                // 前7个和java一样
+                8. for...in语句
+                9. with语句
+            */
+            // java中数组创建用{}
+            // javascript中: 数组创建用中括号[]
+
+            var arr = [false, true, 123, "abc", 3.14];// JS数组中元素的类型随意, 元素的个数随意
+            // 遍历数组
+            for (var i = 0; i < arr.length; i++){
+                alert(arr[i]);
+            }
+
+            for(var i in arr){
+                // i不是元素, 是下标
+                // 跟java中的foreach不一样
+                // 和python中的for in也不一样
+                alert(arr[i]);
+            }
+
+            // for...in语句可以遍历对象的属性
+            User = function(username, password){
+                this.username = username;
+                this.password = password;
+            }
+
+            var u = new User("张三", 444);
+            alert(u.username + " " + u.password);
+            alert(u["username"] + " " + u["password"]);
+
+            // for...in语句作用于对象的时候, i的值不是下标, 也不是元素, 而是属性名
+            for (var i in u){
+                alert(i);
+                alert(typeof i);
+                alert(u[i]);i
+            }
+
+            // with语句用法
+            // with(对象){在这里面可以直接访问对象的属性}
+            with(u){
+                alert(username);
+                alert(password);
+                // 有个问题, 如果访问test, 会自动在test前面加上 u.
+            }
+        </script>
+    </body>
+</html>
+<!-- 
+    public class Test{
+        public static void main(String[] args){
+            int[] arr = {1, 2, 3, 4};
+            int[] arr2 = new int[5];// 等同于: int[] arr2 = {0, 0, 0, 0, 0}
+            int arr[] = {}
+        }
+    }
+ -->

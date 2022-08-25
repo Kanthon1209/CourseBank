@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>JS的局部变量和全局变量</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /*
+                全局变量:
+                    在函数体之外声明的变量属于全局变量, 全局变量的生命周期是:
+                        浏览器打开时声明, 浏览器关闭时销毁, 尽量少用, 
+                        因为全局变量会一直在浏览器的内存当中, 耗费内存空间
+                        能使用局部变量, 尽量使用局部变量
+                        注意: 
+                            当一个变量在声明的时候没有使用var关键字, 那么不管这个变量是在哪里声明的,
+                            他都是全局变量
+                局部变量:
+                    在函数体当中声明的变量, 包括一个函数的形式参数都属于局部变量
+                    局部变量的生命周期是: 函数开始执行时局部变量的内存空间开辟
+                    函数执行结束之后, 局部变量的内存空间释放
+                    局部变量的生命周期较短
+
+            */
+
+            var i = 100;
+            function accessI(){
+                // 访问的是全局变量
+                alert("i = " + i);
+            }
+
+            var username = "jack";
+            function accessUsername(){
+                var username;
+                // 就近原则: 访问局部变量
+                alert("username = " + username);
+            }
+            // 调用函数
+            accessUsername();
+            // 访问的是全局变量
+            alert("username = " + username)
+
+            function accessAge(){
+                var age = 20;
+                alert("age = " + age)
+            }
+            accessAge();
+            // 局部变量只有在函数中可以访问, 函数外面没有办法访问
+            // 在外面函数没有声明, 所以不能访问
+            alert("age = " + age);
+
+            // 注意以下语法
+            function myfun(){
+                myname = "kanthon";
+            }
+            myfun();
+            alert("myname = " + myname)
+
+            // 如果一个变量在声明的时候没有使用var关键字, 那么这个变量是全局变量
+
+        </script>
+    </body>
+</html>

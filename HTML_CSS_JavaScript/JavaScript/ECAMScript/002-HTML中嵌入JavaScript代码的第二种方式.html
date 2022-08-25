@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>HTML中嵌入JavaScript代码的第二种方式</title>
+    </head>
+    <body>
+        <!-- javascript -->
+        <input type="button" value="哈喽哇">
+        <!-- 第二种方式: 脚本块的方式 -->
+        <script type="text/javascript">
+            // alert会阻塞当前页面的加载, 直到用户点击按钮才可以
+            window.alert('Hello World!');
+            window.alert('Hello JavaScript')
+            /*
+                暴露在脚本块当中的程序, 在页面打开的时候执行
+                并且遵守自上而下的顺序依次逐行执行
+                脚本块的位置没有特定要求
+                alert函数会阻塞整个html页面的加载
+                
+            */
+        </script>
+        <input type="button">
+    </body>
+</html>

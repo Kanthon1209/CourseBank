@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Boolean类型</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /*
+                1. JS中的布尔类型永远都只有两个值: true/false (与java相同)
+            */
+            var username = "kanthon";
+            // if之后必须放boolean类型
+            // 如果没有放boolean类型
+            // 如果username为"", 会调用布尔函数将username转换为boolean类型, 也就是false
+            // 如果username不为空, 调用Boolean(username)得到的结果是true
+            // 写的时候不用写Boolean(username), 会自动调用这个函数转换为Boolean类型
+            if (username){
+                alert("欢迎你" + username);
+            }else{
+                alert("用户名不能为空!");
+            }
+
+            // 有就转换为true, 没有就转换为false
+            alert(Boolean(1));// true
+            alert(Boolean(0));// false
+            alert(Boolean(""));// false
+            alert(Boolean("abc"));// true
+            alert(Boolean(null));// false
+            alert(Boolean(NaN));// false 
+            alert(Boolean(undefined));// false 
+            alert(Boolean(Infinity));// true 
+            //
+
+            for (var i = 0; i < 10; i++){
+                alert("i = " + i);
+            }
+
+            // Null类型只有一个值: null
+            alert(typeof null);// 虽然null是Null类型, 但是typeof null输出结果是"object"
+        </script>
+    </body>
+</html>

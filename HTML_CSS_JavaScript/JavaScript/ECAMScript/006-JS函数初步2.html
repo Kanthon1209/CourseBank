@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>JS函数初步2</title>
+    </head>
+    <body>
+        <script>
+            /*
+                java中的方法有重载机制, JS函数能重载吗?
+                    JS当中的函数在调用的时候, 参数的类型没有限制, 并且个数也没有限制(弱类型)
+
+            */
+            // 计算和
+            function sum(a, b){
+                return a + b;
+            }
+
+            // 这里并不是函数重载, 而是直接将同名函数给覆盖了
+            function sum(a, b, c){
+                return a + b + c;
+            }
+
+            // 定义函数sayHello
+            sayHello = function(username){
+                alert("Hello " + username);
+            }
+            
+            var retValue = sum(1, 2);
+            alert(retValue);
+            // 做了加法运算
+
+            // 传一个参数的话, 会将这个参数传给第一个
+            var retValue2 = sum("Jack")
+            alert(retValue2)// 输出结果: Jackundefined
+            // 做了字符串的连接
+
+            var retValue3 = sum()
+            alert(retValue3)// 输出结果: NaN
+            // NaN是一个具体存在的值, 改值表示: 不是数字: Not a Number
+
+            var retValue4 = sum(1, 2, 3);
+            alert(retValue4)// 输出结果: 3
+            // 如果形式参数只有两个, 但是传了三个值, 就会传两个值, 第三个参数忽略
+
+            function test1(username){
+                alert("test1");
+            }
+
+            function test1(){
+                alert("test2");
+            }
+
+            test1("lisi")
+            // JS中同名函数只允许存在一个, 如果有重名的函数, 后声明的函数会将之前声明的同名的函数
+            // 覆盖掉
+            // 这样比较符合弱类型
+
+
+        </script>
+        <input type="button" value="Hello" >
+    </body>
+</html>

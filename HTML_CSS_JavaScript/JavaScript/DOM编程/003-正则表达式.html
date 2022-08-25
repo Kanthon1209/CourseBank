@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>关于正则表达式</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /*
+                1. 什么是正则表达式, 有什么用
+                    正则表达式: Regular Expression
+                    正则表达式主要用在字符串格式匹配方面
+
+                2. 正则表达式实际上是一门独立的学科, 在java语言中支持, C语言中也支持, javascript中也支持
+                    大部分编程语言都支持正则表达式, 正则表达式最初用在医学方面, 用来表示神经符号
+                    目前使用最多的是计算机编程领域, 用作字符串格式匹配, 包括搜索方面
+
+                3. 正则表达式, 对于javascript编程来说, 需要掌握哪些内容?
+                    第一:
+                        常见的正则表达式符号要认识
+                    第二: 
+                        简单的正则表达式要会写
+                    第三: 
+                        他人编写的正则表达式要看懂
+                    第四: 
+                        在javascript当中, 怎么创建正则表达式对象
+                    第五:
+                        在javascipt当中, 正则表达式对象的创建有哪些方法
+                    第六: 
+                        快速从网络上找到自己需要的正则表达式, 测试其有效性
+                
+                4. 常见的正则表达式符号?
+                    . 匹配除换行符号以外的任意字符
+                    \w 匹配字母或数字下划线或汉字
+                    \s 匹配任意的空白符号
+                    \d 匹配数字
+                    \b 匹配单词的开始或者结束
+                    ^ 匹配字符串的开始
+                    $ 匹配字符串的结束
+
+                    * 重复0次或者更多次
+                    + 重复1次或者更多次
+                    ? 重复0次或者一次
+                    {n} 重复n次
+                    {n,} 重复n次或者更多次
+                    {n,m} 重复n到m次
+
+                    [1-9]表示1 - 9数字匹配一次
+                    [A-Za-z0-9]
+
+                    email正则: 
+                        Kanthon1209@outlook.com.cn
+                        \w((\.|-|)\w)*@\w+([.-]\w+)*\.\w+([.-]\w+)*
+                5. 怎么创建正则表达式对象, 怎么调用正则表达式对象的方法?
+                    第一种:
+                        第一种创建方式:
+                            var regExp = /正则表达式/匹配准则;
+                        第二种创建方式:
+                            使用内置支持类RegExp
+                            var regExp = new RegExp("正则表达式", "flags");
+                        关于flags:(就是匹配准则)
+                            g: 全局匹配
+                            i: 忽略大小写
+                            m: 多行搜索(ES规范制定之后才支持m)// 如果前面的是正则表达式, 那么参数不能给m
+                            // 只有前面是普通字符串的时候才能使用m参数
+
+                    正则表达式对象的test()方法?
+                        true / false = 正则表达式对象.test(用户填写的字符串)
+                        true: 匹配成功
+                        false: 匹配失败
+            */
+            window.onload = function(){
+                document.getElementById("btn").onclick = function(){
+                    var email = document.getElementById("email").value;
+                    var emailRegex = /^\w((\.|-|)\w)*@\w+([.-]\w+)*\.\w+([.-]\w+)*$/;
+                    var ok = emailRegex.test(email);
+                    if (!ok){
+                        document.getElementById("emailError").style.color = "red";
+                        document.getElementById("emailError").innerText = "邮箱地址不合法";
+                    }else{
+                        document.getElementById("emailError").innerText = "";
+                    }
+                }
+                document.getElementById("email").onfocus = function(){
+                    document.getElementById("emailError").style.color = "black";
+                    document.getElementById("emailError").innerText = "注意使用正确的邮箱格式";
+                }
+            }
+
+            
+        </script>
+        <input type="text" id="email" value="邮箱地址">
+        <span id="emailError" style="color: red; font-size: 12px"></span>
+        <br>
+        <br>
+        <input type="button" id="btn" value="验证邮箱">
+    </body>
+</html>

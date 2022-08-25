@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>表单验证</title>
+        <style type="text/css">
+            span{
+                color: red;
+                font-size: 12px;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            /*
+                1. 用户名不能为空
+                2. 用户名必须在6-14位之间
+                3. 用户名只能数字字母组成, 不能含有其他符号, 使用正则表达式验证
+                4. 密码和验证密码一致, 邮箱地址合法
+                5. 统一失去焦点验证
+                6. 错误提示信息统一在span标签中提示, 并且要12号字体红色
+                7. 文本框再次获得焦点后清空提示信息
+                8. 最终表单中的所有项合法可以提交
+            */
+            window.onload = function(){
+                var usernameElt = document.getElementById("username");
+                var usernameErrorSpan = document.getElementById("usernameError")
+                usernameElt.onblur = function(){
+                    var username = usernameElt.value.trim();// 要使用trim()函数去除空白
+                    if (username == ""){
+                        usernameErrorSpan.innerText = "用户名不能为空"
+
+                    }else{
+                        // 用户名不为空
+                        var myRegex = /^[a-zA-Z0-9]{6,14}$/;
+                        if(!myRegex.test(username)){
+                            usernameErrorSpan.innerText = "用户名不合法"
+                        }
+                    }
+                }
+
+                usernameElt.onfocus = function(){
+                    if(usernameErrorSpan.innerText == "用户名不能为空"){
+                        usernameElt.value = "";
+                    }
+                    usernameErrorSpan.innerText = "";
+                }
+
+                var pwdErrorSpan = document.getElementById("passwordError");
+                var pwdElt = document.getElementById("password");
+                var pwdVeri = document.getElementById("passwordVeri");
+                var pwdVeriErrorSpan = document.getElementById("passwordVeriErrorSpan");
+
+                pwdVeri.onblur = function(){
+                        if(pwdElt.value != pwdVeri.value){
+                            pwdVeriErrorSpan.innerText = "密码不一致";
+                        }
+                }
+
+                pwdVeri.onfocus = function(){
+                    if(pwdVeriErrorSpan.innerText != ""){
+                        pwdVeri.value = "";
+                    }
+                    pwdVeriErrorSpan.innerText = "";
+                }
+
+                var emailElt = document.getElementById("email");
+                var emailErrorElt = document.getElementById("emailError");
+
+                emailElt.onblur = function(){
+                    var regex = /\w((\.|-|)\w)*@\w+([.-]\w+)*\.\w+([.-]\w+)*/;
+                    var email = emailElt.value.trim();
+                    if(!regex.test(email)){
+                        emailErrorElt.innerText = "邮箱地址不合法";
+                    }
+                }
+
+                emailElt.onfocus = function(){
+                    if(emailErrorElt.innerText!=""){
+                        emailElt.value = "";
+                    }
+                    emailErrorElt.innerText = "";
+                }
+
+                var submitBtn = document.getElementById("submitBtn");
+                var userForm = document.getElementById("userForm");
+                submitBtn.onclick = function(){
+                    if(usernameElt.value!="" && pwdElt.value!="" && pwdVeri.value!="" && emailElt!=""){
+                        if(usernameErrorSpan.value!=""&&pwdVeriErrorSpan!=""&&emailErrorElt!=""){
+                            userForm.submit();
+                        }else{
+                            alert("有问题");
+                        }
+                    }else{
+                        alert("空");
+                    }
+                }
+
+            }
+        </script>
+        <!-- 为了验证方便, 使用get方法, 应该使用post方法 -->
+        <form action="http://localhost:8080/jd/save" method="get" id="userForm">
+            <table>
+                <tr>
+                    <td>
+                        用户名
+                    </td>
+                    <td>
+                        <input type="text" name="username" id="username">
+                    </td>
+                    <td>
+                        <span id="usernameError">
+                            
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        密码
+                    </td>
+                    <td>
+                        <input type="password" name="password" id="password">
+                    </td>
+                    <td>
+                        <span id="passwordError">
+
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        确认密码
+                    </td>
+                    <td>
+                        <input type="password" id="passwordVeri">
+                    </td>
+                    <td>
+                        <span id="passwordVeriErrorSpan">
+
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        邮箱
+                    </td>
+                    <td>
+                        <input type="text" id="email" name="email">
+                    </td>
+                    <td>
+                        <span id="emailError">
+
+                        </span>
+                    </td>
+                </tr>
+                <tr >
+                    <td colspan="2" align="center">
+                        <input type="button" value="注册" id="submitBtn">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="reset" value="重置">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

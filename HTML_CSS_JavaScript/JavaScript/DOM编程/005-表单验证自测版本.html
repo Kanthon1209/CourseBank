@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>表单验证</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            window.onload = function(){
+                
+                document.getElementById("username").onfocus = function(){
+                    document.getElementById("tip1").innerText = "按照规则输入";
+                    document.getElementById("tip2").innerText = "";
+                }
+                document.getElementById("username").onblur = function(){
+                    var username = document.getElementById("username").value;
+                    var MyRegex = /^\w((\.|-|)\w)*@\w+([.-]\w+)*\.\w+([.-]\w+)*$/;
+                    if (username != ""){
+                        if (!MyRegex.test(username)){
+                            document.getElementById("tip1").innerText = "";
+                            document.getElementById("tip2").innerText = "用户名不符合规则";
+                        }else{
+                            document.getElementById("tip1").innerText = "符合规则";
+                            document.getElementById("tip2").innerText = "";
+                            flag1 = true;
+                        }
+                    }
+                }
+                document.getElementById("passwordVeri").onblur = function(){
+                    password = document.getElementById("password").value;
+                    if(document.getElementById("passwordVeri").value != ""){
+                        if(document.getElementById("passwordVeri").value == password){
+                            document.getElementById("tip5").innerText = "验证通过";
+                            document.getElementById("tip6").innerText = "";
+                            flag2 = true;
+                        }else{
+                            document.getElementById("tip5").innerText = "";
+                            document.getElementById("tip6").innerText = "请确保密码一致";
+                        }
+                    }
+                }
+                
+                document.getElementById("btn").onclick = function(){
+                    document.getElementById("form")
+                }
+            }
+        </script>
+        <form action="http://localhost:8080/jd/login" method="get" id="form">
+            <table>
+                <tr>
+                    <td>用户名</td>
+                    <td><input type="text" id="username" name="username"></td>
+                    <td>
+                        <span id="usernameError">
+                            <font id="tip1" color="grey" font-size="12px"></font>
+                            <font id="tip2" color="red" font-size="12px"></font>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>密码</td>
+                    <td><input type="password" id="password" name="password"></td>
+                </tr>
+                <tr>
+                    <td>验证密码</td>
+                    <td><input type="password" id="passwordVeri"></td>
+                    <td>
+                        <span>
+                            <font id="tip5" color="grey"></font>
+                            <font id="tip6" color="red"></font>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="submit" id="btn" value="验证">
+                        <input type="reset" id="rstBtn" value="重置" >
+                    </td>
+                    
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

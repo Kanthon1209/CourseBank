@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>innerHTML和innerText操作div和span</title>
+        <style type="text/css">
+            #div1{
+                background-color: aquamarine;
+                width: 300px;
+                height: 300px;
+                border: 1px black solid;
+                position: absolute;
+                top: 100px;
+                left: 100px;
+            }
+
+            #div2{
+                background-color: aqua;
+                width: 300px;
+                height: 300px;
+                border: 1px black solid;
+                position: absolute;
+                top: 100px;
+                left: 500px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 
+            innerText和innerHTML属性有什么区别?
+                相同点: 都是设置元素内部的内容
+                不同点: 
+                    innerHTML会把后面的字符串当作HTML代码解释
+                    innerText会把后面的内容当作普通文本
+         -->
+        <script type="text/javascript">
+            window.onload = function(){
+                var btn = document.getElementById("btn");
+                btn.onclick = function(){
+                    // 设置div的内容
+                    // 第一步: 获取div对象
+                    var divElmt = document.getElementById("div1");
+                    var divElmt2 = document.getElementById("div2");
+                    divElmt.style.backgroundColor = "red";
+                    // 第二步: 使用innerHTML属性来设置元素内部的内容
+                    divElmt.innerHTML = "<font color='blue'>用户名不能为空!</font>";
+                    divElmt2.innerText = "<font color='red'>用户名不能为空!</font>";
+                    // innerHTML和innerText区别
+                    // innerHTML属性如果赋值html代码, 可以按照html标签解析
+                    // innerText属性如果赋值html代码, 会被当作普通文本处理
+                }
+
+                
+            }
+        </script>
+        <input type="button" value="设置div中的内容" onclick="" id="btn">
+        <div id="div1"></div>
+        <div id="div2"></div>
+    </body>
+</html>

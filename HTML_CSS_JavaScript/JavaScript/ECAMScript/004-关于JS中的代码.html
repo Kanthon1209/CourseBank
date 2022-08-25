@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>关于JS中的变量</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /*
+                回顾java中的变量:
+                    1. java中怎么定义/声明变量
+                        数据类型 变量名;
+                        例如:
+                            int i;
+                            double d;
+                            boolean flag;
+                    2. java中的变量怎么进行赋值?
+                        使用"="运算符进行赋值运算("="右边的代码先执行, 将右边的执行结果赋值给左边的变量)
+                        变量名 = 值;
+                        例如:
+                            i = 10;
+                            d = 3.14;
+                            flag = true;
+                    3. java语言是一种强类型语言, 强类型怎么理解
+                        java语言存在编译机制, 假设有代码int i;
+                        在java中有一个特点, java程序在编译阶段就已经确定了i变量的数据类型,
+                        i变量的数据类型在编译阶段是int类型
+                        那么这个变量到最终内存释放一直都是int类型, 不可能变成其他类型
+                        数据类型: byte short int long float double boolean char
+                        字节数:    1    2      4   8   4     8      1       2 
+
+                        java中要求变量声明的时候是什么类型, 以后就都是这种类型, 不可变, 编译期
+                        强行固定变量的数据类型, 称为强类型语言
+
+                        public int sum(int a, int b){
+                            return a + b;
+                        } 
+                        sum(? ,?)必须是int类型的数据
+
+                javascript当中的变量?
+                    怎么声明变量?
+                        var 变量名;
+                    怎么给变量赋值?
+                        变量名 = 值;
+                    javascript是一种弱类型语言, 没有编译阶段, 一个变量可以随意赋值
+
+                重点: JavaScript是一种弱类型编程语言
+
+
+            */
+           var i;
+           alert("i = " + i);
+           // undefined在js中是一个具体存在的值
+           // 在JS当中, 当一个变量没有手动赋值的时候, 系统默认赋值undefined
+           alert(undefined);
+           var k = undefined;
+           alert("k = " + k);
+
+           // 一个变量没有声明, 直接访问, 会出什么问题: 会报错
+           // alert(age);
+
+           // 一个
+           var a, b, c = 200;
+           alert("a = " + a);
+           alert("b = " + b);
+           alert("c = " + c);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>获取下拉列表中的value</title>
+    </head>
+    <body>
+        <select name="provinceSelectElt" id="province" onchange="alert(this.value)">
+            <option value="001">河北省</option>
+            <option value="002">安徽省</option>
+            <option value="003">河南省</option>
+            <option value="004">山东省</option>
+            <option value="005">山西省</option>
+        </select>
+    </body>
+</html>
+<!-- 
+    省份和市区是一对多的关系:
+        一对多: 两张表, 多的表加外键
+    省份表: t_province
+    id      pcode       pname
+    ------------------------------
+    1       001         河北省
+    2       002         安徽省
+    3       003         河南省
+    4       004         山东省
+    5       005         山西省
+
+    ...
+
+    市区表: t_city
+    id      ccode       cname       pcode(fk)
+    1       001         石家庄         001
+    2       002         保定           001
+    3       003         邢台           001
+    4       004         承德           001
+    5       005         张家口         001
+    ...
+
+    前端用户选择的假如是河北省, 那么必须获取到河北省的pcode, 获取到001
+    然后将001发送给服务器, 服务器底层执行一条sql语句
+        select * from t_city where pcode = '001';
+
+
+ -->

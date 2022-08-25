@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>内置支持类Array</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            // 创建长度为0的数组
+            var arr = [];
+            // 数据类型随意
+            var arr2 = [1,2,3,false,"abc",3.14];
+            document.write(arr.length)
+            document.write("<br>")
+            document.write(arr2.length)
+            document.write("<br>")
+
+            // 下标会越界吗
+            arr2[7] = "test";
+
+            // 遍历
+            for (var i = 0;i < arr2.length;i++){
+                document.writeln(arr2[i]);
+                document.write("<br>");
+            }
+
+            // js中的数组会自动扩容, 不会越界
+            // 另一种创建数组的方式
+            var a = new Array();
+            document.write(a.length)
+
+            var a2 = Array(3);// 表示长度为3
+            document.writeln(a2.length)
+
+            var a3 = new Array(3, 2)//表示3和2是数组当中具体的元素
+            document.write(a3.length)// 2
+
+            var a = [1, 2, 3, 9];
+            var str = a.join("-");
+            document.write("<br>")
+            // Array中的join(str)函数: 使用参数str将数组中的元素连接, 返回一个字符串
+            document.write(str)
+
+            // Array中的push()函数: 在数组末尾添加一个元素, 数组长度＋1
+            document.write("<br>")
+            a.push(10);
+            document.write(a.join("-"))
+            // Array中的pop()函数: 在数组末尾弹出一个元素, 数组长度-1
+            document.write("<br>")
+            var endElt = a.pop();
+            document.write(a.join("-"))
+
+            document.write("<br>")
+            var endElt = a.pop();
+            document.write(a.join("-"))
+
+            // 注意: JS中的数组可以自动模拟栈数据内存: 后进先出, 先进后出
+            // push压栈
+            // pop弹栈
+
+            document.write("<br>")
+            a.reverse();
+            document.write(a.join("-"))
+        </script>
+    </body>
+</html>

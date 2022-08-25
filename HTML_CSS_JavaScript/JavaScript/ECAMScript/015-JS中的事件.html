@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>JS中的常用事件</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+
+            /*
+                JS中的事件:
+                        blur: 失去焦点
+                        focus: 获得焦点
+
+                        click: 鼠标单击
+                        dbclick: 鼠标双击
+
+                        keydown: 键盘按下
+                        keyup: 键盘弹起
+
+                        mousedown: 鼠标按下
+                        mouseup: 鼠标弹起
+                        mouseover: 鼠标经过
+                        mousemove: 鼠标移动
+                        mouseout: 鼠标离开
+
+                        reset: 表单重置
+                        submit: 表单提交
+
+                        change: 下拉列表中选中项改变, 或者文本框改变
+                        select: 文本被选中
+                        load: 页面加载完毕
+
+                    任何一个事件都会对应一个事件句柄, 事件句柄是在事件前添加on
+                    onXXX这个事件句柄出现在一个标签的属性位置上
+                    事件句柄以属性的形式存在
+            */
+
+            // 对当前程序来说, sayHello函数被称为回调函数(callback函数)
+            // 回调函数的特点: 自己把这个函数代码写出来, 但是这个函数不是自己调用
+            // 由其他程序负责调用该函数
+            function sayHello(){
+                alert("Hello JS");
+            }
+        </script>
+        <!-- 注册事件的第一种方式, 直接在标签中使用事件句柄 -->
+        <input type="button" value="hello" onclick="sayHello()">
+
+        <input type="button" id="mybutton" value="hello to you">
+        <input type="button" id="mybutton1" value="hello hello hhello">
+        <input type="button" id="mybtn2" value="kanthon says hello">
+        <script type="text/javascript">
+            /*
+                第二种注册事件的方式, 是使用纯JS代码完成事件的注册
+            */
+            // 第一步: 先获取这个对象
+            var bt = document.getElementById("mybutton");
+            bt.onclick = sayHello;// 注意, 这里不要加上小括号
+            // 这里相当于把这个函数传了过去, 不代表调用函数
+
+
+            var mybtn1 = document.getElementById("mybutton1");
+            // 这个函数没有名字, 叫做匿名函数, 这个匿名函数也是一个回调函数
+            mybtn1.onclick = function(){
+                alert("say hello to you ");// 这个函数在页面打开的时候只是注册上
+                // 不会被调用, 只有在click事件发生之后才会调用
+            }
+
+            document.getElementById("mybtn2").onclick = function(){
+                alert("test......");
+            }
+        </script>
+    </body>
+</html>
+<!-- 
+    Java中也有回调函数机制:
+        public class MyClass{
+            public static void main(String[] args){
+                // 主动调用run()方法, 站在这个角度看run()方法叫做正向调用
+                run();
+            }
+            // 站在run()方法编写者角度来看这个方法, 把run()方法叫做回调函数
+            public void run(){
+                System.out.println("run...");
+            }
+        }
+ -->

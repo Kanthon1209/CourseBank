@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>关于JS代码的执行顺序</title>
+    </head>
+    <!-- load事件什么时候发生, 页面元素加载完毕之后才会发生 -->
+    <body onload="ready()">
+        <script type="text/javascript">
+            /*
+            // 注意, 在这里, 按钮还没有生成, 找不到btn
+            document.getElementById("btn").onclick = function(){
+                alert("Hello JS")
+            }
+            */
+
+            
+            function ready(){
+                var btn = document.getElementById("btn");
+                btn.onclick = function(){
+                    alert("Hello JS");
+                }
+            }
+        </script>
+        <input type="button" value="Hello" id="btn">
+    </body>
+</html>
